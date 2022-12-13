@@ -1,0 +1,57 @@
+{
+    "name": "Alan_InputSysTest",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "5e49bf1d-9e2d-4eb9-8bec-7aeec507ea42",
+            "actions": [
+                {
+                    "name": "Punch",
+                    "type": "Button",
+                    "id": "1fba500c-2ced-44e4-919f-f1b3eee9f362",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "60d838c1-2931-4e79-852f-7be1a28b5ac0",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
