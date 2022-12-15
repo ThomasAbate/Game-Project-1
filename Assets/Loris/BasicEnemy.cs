@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
-    public int MaxHealth = 10;
+    public int MaxHealth = 1;
     int currentHealth;
     public Animator animator;
+
     void Start()
     {
         currentHealth = MaxHealth;
@@ -17,19 +18,17 @@ public class BasicEnemy : MonoBehaviour
     {
         currentHealth -= damage;
 
-
         if (currentHealth <= 0)
         {
-            StartCoroutine(Die());
+            CountEnemy.instance.numberEnemy = CountEnemy.instance.numberEnemy - 1;
+            animator.Play("Dead");
+            Invoke("Die", 0.1f);
         }
     }
 
-    public IEnumerator Die()
+    public void Die()
     {
-        //GetComponent<Enemy_behaviour>().moveSpeed = 0; 
-        GetComponent<Enemy_behaviour>().enabled = false;
-        animator.Play("Dead");
-        yield return new WaitForSeconds(2.30f);
+        GetComponent<Droper>().InstantiateLoot(transform.position);
         Destroy(gameObject);
     }
 }

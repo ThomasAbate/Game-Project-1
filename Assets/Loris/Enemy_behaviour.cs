@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class Enemy_behaviour : MonoBehaviour
 {
-    #region Public Variables
+    
     public Transform rayCast;
     public LayerMask raycastMask;
     public float rayCastLength;
@@ -20,9 +20,9 @@ public class Enemy_behaviour : MonoBehaviour
     public Transform leftLimit;
     public Transform rightLimit;
     public bool isAttacking;
-    #endregion
+    
 
-    #region Private Variables
+    
     private RaycastHit2D hit;
     private Transform target;
     private Animator anim;
@@ -31,7 +31,7 @@ public class Enemy_behaviour : MonoBehaviour
     private bool inRange; //Check if Player is in range
     private bool cooling; //Check if Enemy is cooling after attack
     private float intTimer;
-    #endregion
+    
 
     void Awake()
     {
@@ -81,11 +81,7 @@ public class Enemy_behaviour : MonoBehaviour
         {
             target = trig.transform;
             inRange = true;
-            Flip(); 
-        }
-        if (trig.CompareTag("Player") && isAttacking)
-        {
-            PlayerHealth.instance.Hurt();
+            Flip();
         }
     }
 
@@ -111,7 +107,7 @@ public class Enemy_behaviour : MonoBehaviour
 
     void Move()
     {
-        anim.SetBool("canWalk", true);
+        
 
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_attack"))
         {
@@ -210,5 +206,11 @@ public class Enemy_behaviour : MonoBehaviour
         //rotation.y = (currentTarget.position.x < transform.position.x) ? rotation.y = 180f : rotation.y = 0f;
 
         transform.eulerAngles = rotation;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
     }
 }

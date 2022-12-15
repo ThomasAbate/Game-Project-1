@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Attack Attributes")]
     public float timeAttack;
-    public static float damage = 1;
+    public static int damage = 1;
     
     [Header("Syringe")]
     public int syringeCount = 3;
@@ -105,13 +105,14 @@ public class PlayerController : MonoBehaviour
 
         if (direction.x < 0)
         {
-            poing.transform.localPosition = new Vector2(-1.05f, -0.44f);
+            poing.transform.localPosition = new Vector2(-1.72f, 0.72f);
             CamAnimator.SetBool("CamSlide", true);
             GetComponent<SpriteRenderer>().flipX = true;
+            
         }
         else if (direction.x > 0)
         {
-            poing.transform.localPosition = new Vector2(1.05f, -0.44f);
+            poing.transform.localPosition = new Vector2(1.72f, 0.72f);
             CamAnimator.SetBool("CamSlide", false);
             GetComponent<SpriteRenderer>().flipX = false;
         }
@@ -237,6 +238,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Seringue");
             Destroy(collision.gameObject);
         }
+
+        
     }
 
     public void PickUpSyringe()
